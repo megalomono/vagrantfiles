@@ -14,7 +14,7 @@ Vagrant files for development virtual machines
 Building the virtual machine is this easy:
 
     git clone https://github.com/megalomono/vagrantfiles.git
-    cd <vitual-machine>
+    cd <virtual-machine>
     vagrant up
 
 After the installation has finished, you can access the virtual machine with
