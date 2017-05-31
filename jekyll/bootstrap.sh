@@ -1,5 +1,3 @@
-ruby_home="/usr/bin/ruby"
-
 # Remove pre-installed ruby 1.8.7
 sudo rm -rf /opt/vagrant_ruby
 sudo rm /etc/profile.d/vagrant_ruby.sh
@@ -7,19 +5,18 @@ sudo rm /etc/profile.d/vagrant_ruby.sh
 # Update the packages in the VM
 sudo apt-get -y update
 
-# Installing git
-sudo apt-get -y install git
-
 # Installing build tools
 sudo apt-get -y install make
 
-# Install requisites for Jekyll
-sudo apt-get -y install nodejs
-sudo apt-get -y install ruby1.9.1
-sudo apt-get -y install ruby1.9.1-dev
-sudo gem install jekyll
+# Installing Ruby
+sudo wget -O ruby-install-0.6.1.tar.gz https://github.com/postmodern/ruby-install/archive/v0.6.1.tar.gz
+sudo tar -xzvf ruby-install-0.6.1.tar.gz
+cd ruby-install-0.6.1/
+sudo make install
+cd ..
+sudo rm -rf ruby-install-0.6.1
+sudo rm ruby-install-0.6.1.tar.gz
+sudo ruby-install --system --latest ruby
 
-# Remove the build tools
-sudo apt-get -y remove make
-sudo apt-get -y autoremove
-sudo apt-get -y clean
+# Installing Jekyll
+sudo gem install jekyll
